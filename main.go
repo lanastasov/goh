@@ -97,6 +97,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
         // These keys should exit the program.
         case "ctrl+c", "q":
+			   clear_screen()
             return m, tea.Quit
 
         // The "up" and "k" keys move the cursor up
