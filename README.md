@@ -19,7 +19,7 @@ For now run these commands:
 git clone https://github.com/breakthatbass/goh.git
 cd goh
 go build
-cp goh usr/local/bin/
+cp goh /usr/local/bin/
 ```
 
 ### Dependencies
