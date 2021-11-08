@@ -13,6 +13,15 @@ goh <username>
 - press enter to open the webpage of the selected repo.
 - quit the program with `q` or `ctrl-c`
 
+### Install
+For now run these commands:
+```
+git clone https://github.com/breakthatbass/goh.git
+cd goh
+go build
+cp goh usr/local/bin/
+```
+
 ### Dependencies
 `goh` is built using the [Bubble Tea](https://github.com/charmbracelet/bubbletea) Go tui framework and [Go GitHub](https://github.com/google/go-github) GitHub API Go library.  
 
