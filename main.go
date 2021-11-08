@@ -133,7 +133,8 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 func (m model) View() string {
     // The header
-    s := "repos\n\n"
+    //s := "repos\n\n"
+	 var s string
 
     // Iterate over our choices
     for i, choice := range m.repo_name {
@@ -155,12 +156,33 @@ func (m model) View() string {
     return s
 }
 
+func check_args(args []string) string {
+	if len(args[1:]) != 1 {
+		return ""
+	} else {
+		return args[1]
+	}
+}
+
+func print_usage() {
+	fmt.Println("# goh")
+	fmt.Println("	navigate github repos in a TUI")
+	fmt.Println()
+	fmt.Println("usage: goh <github username>")
+	fmt.Println()
+}
+
 
 func main() {
 	
+	user_name := check_args(os.Args)
+	if user_name == "" {
+		print_usage()
+		os.Exit(1)
+	}
 	// get github info
 	client := github.NewClient(nil)
-	repos, _, err := client.Repositories.List(context.Background(), "breakthatbass", nil)
+	repos, _, err := client.Repositories.List(context.Background(), user_name, nil)
 	if err != nil {
 		fmt.Println("error: problem getting repo data for user");
 		os.Exit(1)
